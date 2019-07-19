@@ -1,0 +1,35 @@
+<mat-card class="card">
+  <p>Create New Order</p>
+  <p style="color: red;  float: right">{{messageResponse}}</p>
+  <mat-card-content class="card-content">
+    <form #formClient="ngForm" (mousemove)="submit()">
+      <div class="example-container">
+        <mat-form-field class="">
+          <input matInput type="number" name="input1"  #form1="ngModel"
+                 [(ngModel)]="input1" placeholder="input1"  required>
+          <mat-hint></mat-hint>
+          <mat-error *ngIf="form1.errors?.required">Required input1</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput type="number" name="input2"  #form2="ngModel"
+                 [(ngModel)]="input2" placeholder="input2"  required>
+          <mat-hint></mat-hint>
+          <mat-error *ngIf="form2.errors?.required">Required form2</mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput type="number" name="input3"  #form3="ngModel"
+                 [(ngModel)]="input3" placeholder="input3"  required>
+          <mat-hint></mat-hint>
+          <mat-error *ngIf="form3.errors?.required">Required form3</mat-error>
+        </mat-form-field>
+         <mat-form-field>
+          <mat-select placeholder="Select">
+            <mat-option value="option">Option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <hr>
+      <button mat-raised-button color="accent" type="submit" [disabled]="formClient.invalid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
