@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResponseFromServer} from './response-from-server';
 
-const url = 'localhost:8080';
+const url = 'http://localhost:8080';
 
 @Injectable({
   providedIn: 'root'

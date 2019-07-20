@@ -1,23 +1,24 @@
 <mat-card class="card">
   <p>Create New Order</p>
   <p style="color: red;  float: right">{{messageResponse}}</p>
+  <p style="color: blue">{{messageResponseTwo}}</p>
   <mat-card-content class="card-content">
-    <form #formClient="ngForm" (mousemove)="submit()">
+    <form #formClient="ngForm" (mousemove)="summa()" (ngSubmit)="submit(formClient)">
       <div class="example-container">
         <mat-form-field class="">
-          <input matInput type="number" name="input1"  #form1="ngModel"
+          <input matInput type="number" name="name1"  #form1="ngModel"
                  [(ngModel)]="input1" placeholder="input1"  required>
           <mat-hint></mat-hint>
           <mat-error *ngIf="form1.errors?.required">Required input1</mat-error>
         </mat-form-field>
         <mat-form-field class="">
-          <input matInput type="number" name="input2"  #form2="ngModel"
+          <input matInput type="number" name="name2"  #form2="ngModel"
                  [(ngModel)]="input2" placeholder="input2"  required>
           <mat-hint></mat-hint>
           <mat-error *ngIf="form2.errors?.required">Required form2</mat-error>
         </mat-form-field>
         <mat-form-field class="">
-          <input matInput type="number" name="input3"  #form3="ngModel"
+          <input matInput type="number" name="name3"  #form3="ngModel"
                  [(ngModel)]="input3" placeholder="input3"  required>
           <mat-hint></mat-hint>
           <mat-error *ngIf="form3.errors?.required">Required form3</mat-error>
