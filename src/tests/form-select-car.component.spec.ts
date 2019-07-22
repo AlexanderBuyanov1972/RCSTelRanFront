@@ -2,21 +2,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 
-import { FormClientComponent } from './form-client.component';
+import { FormSelectCarComponent } from '../app/form/form-select-car/form-select-car.component';
 
 describe('FormClientComponent', () => {
-  let component: FormClientComponent;
-  let fixture: ComponentFixture<FormClientComponent>;
+  let component: FormSelectCarComponent;
+  let fixture: ComponentFixture<FormSelectCarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormClientComponent ]
+      declarations: [ FormSelectCarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormClientComponent);
+    fixture = TestBed.createComponent(FormSelectCarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,11 @@
+<nav mat-tab-nav-bar style="background-color: #cccaaa">
+<label class="mat-tab-link"><h6>RentCompanyLTD</h6></label>
+<label mat-tab-link [routerLink]="LINK_HOME.path" *ngIf="true">{{LINK_HOME.label}}</label>
+<label mat-tab-link [routerLink]="LINK_ABOUT_US.path" *ngIf="true">{{LINK_ABOUT_US.label}}</label>
+<label mat-tab-link [routerLink]="LINK_CAR_RENTAL_COUNTRY.path" *ngIf="true">{{LINK_CAR_RENTAL_COUNTRY.label}}</label>
+<label mat-tab-link [routerLink]="LINK_CAR_RENTAL_ABROAD.path" *ngIf="true">{{LINK_CAR_RENTAL_ABROAD.label}}</label>
+<label mat-tab-link [routerLink]="LINK_BRANCHES.path" *ngIf="true">{{LINK_BRANCHES.label}}</label>
+<label mat-tab-link [routerLink]="LINK_DISCOUNTS.path" *ngIf="true">{{LINK_DISCOUNTS.label}}</label>
+<label mat-tab-link [routerLink]="LINK_LOGIN.path" *ngIf="true">{{LINK_LOGIN.label}}</label>
+</nav>
+<router-outlet></router-outlet>

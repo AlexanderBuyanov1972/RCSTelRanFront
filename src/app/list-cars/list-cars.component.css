@@ -1,0 +1,11 @@
+.example-card{
+  margin: 2% 0% 2% 0% ;
+  width: 90%;
+  text-align: justify;
+}
+.list {
+  margin: 0% 0% 0% 15% ;
+  /*height: 80vh;*/
+  /*overflow-y: auto;*/
+  /*height: 100%;*/
+}

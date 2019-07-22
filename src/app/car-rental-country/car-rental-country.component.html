@@ -1,0 +1,53 @@
+<mat-horizontal-stepper class="mhs" [linear]="isLinear" #stepper>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form class="ms" [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Select Car</ng-template>
+      <div class="lotos" style="width: 30%">
+        <app-form-select-car (onChange)="handleChange($event)"></app-form-select-car>
+      </div>
+      <div class="lotos" style="width: 65%; float: right">
+        <app-list-cars [flagList]="myTask" style="overflow-y: auto"></app-list-cars>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form class="ms" [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Addition</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Addition" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form class="ms" [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Personal Data</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step class="">
+    <div class="ms">
+      <ng-template matStepLabel class="ms">Agreement</ng-template>
+      You are now done.
+      <div class="">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
+

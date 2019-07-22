@@ -1,0 +1,16 @@
+.mhs{
+  background-color: aqua;
+  /*height: 90%;*/
+  overflow-y: auto
+}
+.ms{
+  background-color: aquamarine;
+
+ overflow-y: auto;
+}
+.example-container{
+  overflow-y: auto;
+}
+.lotos{
+  display: inline-block;
+}

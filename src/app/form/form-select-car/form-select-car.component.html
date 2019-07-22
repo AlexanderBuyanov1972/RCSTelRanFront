@@ -1,0 +1,124 @@
+<mat-card class="card">
+  <p>Select Car</p>
+  <mat-card-content class="card-content">
+    <form #formSelectCar="ngForm" (mousemove)="summa()">
+      <div class="example-container">
+
+        <mat-form-field>
+          <mat-label>Pickup Location</mat-label>
+          <mat-select ngModel #pickup_location="ngModel" name="pickup_location" [value]="valuePickupLocation" required>
+            <mat-option *ngFor="let location of pickupsLocationArray" [value]="location">{{location}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="pickup_location.errors?.required">{{requiredPickupLocationMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Type Vehicle</mat-label>
+          <mat-select ngModel #type_vehicle="ngModel" name="type_vehicle" [value]="valueTypeVehicle" required>
+            <mat-option *ngFor="let type of typeVehicleArray" [value]="type">{{type}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="type_vehicle.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Pickup Time</mat-label>
+          <mat-select ngModel #pickup_time="ngModel" name="pickup_time" [value]="valuePickupTime" required>
+            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="pickup_time.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Pickup Date</mat-label>
+          <input matInput [min]="minDatePickup" [max]="maxDatePickup" [matDatepicker]="pickerPickup"
+                 placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="pickerPickup"></mat-datepicker-toggle>
+          <mat-datepicker #pickerPickup></mat-datepicker>
+          <mat-error *ngIf="pickerPickup.errors?.required">{{requiredPickupDateMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Car Return Time</mat-label>
+          <mat-select ngModel #car_return_time="ngModel" name="car_return_time" [value]="valueCarReturnTime" required>
+            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="car_return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Car Return Date</mat-label>
+          <input matInput [min]="minDateReturn" [max]="maxDateReturn" [matDatepicker]="pickerReturn"
+                 placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+          <mat-datepicker #pickerReturn></mat-datepicker>
+          <mat-error *ngIf="pickerReturn.errors?.required">{{requiredCarReturnDateMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="">
+          <input matInput type="text" name="days" #days="ngModel" [(ngModel)]="rentDays"
+                 placeholder="Number of rental days " readonly required>
+          <mat-hint></mat-hint>
+          <mat-error *ngIf="days.errors?.required">{{requiredRentDaysMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="">
+          <input matInput type="text" name="discount_code" #discount_code="ngModel" [(ngModel)]="discountCode"
+                 placeholder="discount_сode" required>
+          <mat-hint></mat-hint>
+          <mat-error *ngIf="discount_code.errors?.required">{{requiredRentDaysMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Age Driver</mat-label>
+          <mat-select ngModel #age_driver="ngModel" name="age_driver" [value]="valueAgeDriver" required>
+            <mat-option *ngFor="let age of ageDriverArray" [value]="age">{{age}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="car_return_time.errors?.required">{{requiredAgeDriverMessage}}</mat-error>
+        </mat-form-field>
+        <div class="example-button-row">
+          <button mat-button class="mat-button button-form" type="button"
+                  [disabled]="formSelectCar.invalid" (click)="showList()" >Show Prices
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
+<!--<mat-card class="card">-->
+<!--  <p>Select Car</p>-->
+<!--  <p style="color: red;  float: right">{{messageResponse}}</p>-->
+<!--  <p style="color: blue">{{messageResponseTwo}}</p>-->
+<!--  <mat-card-content class="card-content">-->
+<!--    <form #formClient="ngForm" (mousemove)="summa()" (ngSubmit)="submit(formClient)">-->
+<!--      <div class="example-container">-->
+<!--        <mat-form-field class="">-->
+<!--          <input matInput type="number" name="name1"  #form1="ngModel"-->
+<!--                 [(ngModel)]="input1" placeholder="input1"  required>-->
+<!--          <mat-hint></mat-hint>-->
+<!--          <mat-error *ngIf="form1.errors?.required">Required input1</mat-error>-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field class="">-->
+<!--          <input matInput type="number" name="name2"  #form2="ngModel"-->
+<!--                 [(ngModel)]="input2" placeholder="input2"  required>-->
+<!--          <mat-hint></mat-hint>-->
+<!--          <mat-error *ngIf="form2.errors?.required">Required form2</mat-error>-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field class="">-->
+<!--          <input matInput type="number" name="name3"  #form3="ngModel"-->
+<!--                 [(ngModel)]="input3" placeholder="input3"  required>-->
+<!--          <mat-hint></mat-hint>-->
+<!--          <mat-error *ngIf="form3.errors?.required">Required form3</mat-error>-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field>-->
+<!--          <mat-select placeholder="Select">-->
+<!--            <mat-option value="option">Option</mat-option>-->
+<!--          </mat-select>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--      &lt;!&ndash;      <hr>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <button mat-raised-button color="accent" type="submit" [disabled]="formClient.invalid">Submit</button>&ndash;&gt;-->
+<!--    </form>-->
+<!--  </mat-card-content>-->
+<!--</mat-card>-->
