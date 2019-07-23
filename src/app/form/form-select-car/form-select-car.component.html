@@ -19,22 +19,33 @@
           </mat-select>
           <mat-error *ngIf="type_vehicle.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
         </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Pickup Time</mat-label>
-          <mat-select ngModel #pickup_time="ngModel" name="pickup_time" [value]="valuePickupTime" required>
-            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="pickup_time.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
-        </mat-form-field>
-
+        <!--**************************************Pickup Date****************************************************-->
         <mat-form-field class="example-full-width">
           <mat-label>Pickup Date</mat-label>
-          <input matInput [min]="minDatePickup" [max]="maxDatePickup" [matDatepicker]="pickerPickup"
-                 placeholder="Choose a date">
+          <input matInput [min]="minDatePickup" [max]="functionPickup(dateReturn)" [matDatepicker]="pickerPickup"
+                 placeholder="Choose a date" [formControl]="datePickup">
           <mat-datepicker-toggle matSuffix [for]="pickerPickup"></mat-datepicker-toggle>
           <mat-datepicker #pickerPickup></mat-datepicker>
           <mat-error *ngIf="pickerPickup.errors?.required">{{requiredPickupDateMessage}}</mat-error>
+        </mat-form-field>
+        <!--**************************************Select Pickup Time****************************************************-->
+        <mat-form-field>
+          <mat-label>Pickup Time</mat-label>
+          <mat-select ngModel #pickup_time="ngModel" name="pickup_time" [value]="valuePickupTime" required>
+            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time"
+            [disabled]="flagSelectOptions(time)">{{time}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="pickup_time.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
+        </mat-form-field>
+        <!--**************************************Return Date****************************************************-->
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Car Return Date</mat-label>
+          <input matInput [min]="functionReturn(datePickup)" [matDatepicker]="pickerReturn"
+                 placeholder="Choose a date" [formControl]="dateReturn">
+          <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
+          <mat-datepicker #pickerReturn></mat-datepicker>
+          <mat-error *ngIf="pickerReturn.errors?.required">{{requiredCarReturnDateMessage}}</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -44,16 +55,7 @@
           </mat-select>
           <mat-error *ngIf="car_return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
         </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>Car Return Date</mat-label>
-          <input matInput [min]="minDateReturn" [max]="maxDateReturn" [matDatepicker]="pickerReturn"
-                 placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
-          <mat-datepicker #pickerReturn></mat-datepicker>
-          <mat-error *ngIf="pickerReturn.errors?.required">{{requiredCarReturnDateMessage}}</mat-error>
-        </mat-form-field>
-
+<!--*********************************rent Days**********************************************-->
         <mat-form-field class="">
           <input matInput type="text" name="days" #days="ngModel" [(ngModel)]="rentDays"
                  placeholder="Number of rental days " readonly required>
@@ -77,7 +79,7 @@
         </mat-form-field>
         <div class="example-button-row">
           <button mat-button class="mat-button button-form" type="button"
-                  [disabled]="formSelectCar.invalid" (click)="showList()" >Show Prices
+                  [disabled]="formSelectCar.invalid" (click)="showList()">Show Prices
           </button>
         </div>
       </div>
