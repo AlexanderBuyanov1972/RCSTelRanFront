@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CalculateService} from '../calculate.service';
 import {FormControl, NgForm} from '@angular/forms';
 import {SelectionsService} from '../../services/selections.service';
+import {MatSelect} from '@angular/material';
 
 @Component({
   selector: 'app-form-select-car',
@@ -11,16 +12,15 @@ import {SelectionsService} from '../../services/selections.service';
 
 export class FormSelectCarComponent implements OnInit {
   @Output() onChange = new EventEmitter();
-  minDaysRent = 1;
   valuePickupLocation = '';
-  valuePickupTime = '';
-  valueCarReturnTime = '';
   valueTypeVehicle = '';
   valueAgeDriver = '';
+
   pickupsLocationArray: string[] = [];
   pickupsTimeArray: string[] = [];
   typeVehicleArray: string[] = [];
   ageDriverArray: string[] = [];
+
   requiredPickupLocationMessage = 'Required pickup location.';
   requiredPickupTimeMessage = 'Required pickup time.';
   requiredPickupDateMessage = 'Required pickup datePickup.';
@@ -35,9 +35,44 @@ export class FormSelectCarComponent implements OnInit {
   datePickup = new FormControl();
   dateReturn = new FormControl();
   minDatePickup = new Date();
+  valuePickupTime = '';
+  valueReturnTime = '';
+  private minDaysRent = 1;
 
+// ------------------------рабочий код-----------------------------------------------------------------------
   constructor(private calculateService: CalculateService,
               private selectionsService: SelectionsService) {
+  }
+
+  ngOnInit() {
+    this.pickupsLocationArray = this.selectionsService.pickupLocationArray;
+    this.pickupsTimeArray = this.selectionsService.time;
+    this.typeVehicleArray = this.selectionsService.typeVehicleArray;
+    this.ageDriverArray = this.selectionsService.ageDriverArray;
+  }
+
+
+  // tslint:disable-next-line:variable-name
+  summa(datePickup: FormControl, dateReturn: FormControl, pickup_time: MatSelect, return_time: MatSelect) {
+    let days = 0;
+    let day = 0;
+    const timeP = pickup_time.value;
+    const timeR = return_time.value;
+
+    if (datePickup.value !== null && dateReturn.value !== null) {
+      days = (new Date(dateReturn.value).getTime() - new Date(datePickup.value).getTime())
+        / (1000 * 60 * 60 * 24);
+      // tslint:disable-next-line:max-line-length
+      if ((timeP !== '' || timeP !== null) && (timeR !== '' || timeR !== null)) {
+        // tslint:disable-next-line:radix
+        const numTimePickup = Number.parseInt(timeP.replace(':', ''));
+        // tslint:disable-next-line:radix
+        const numTimeReturn = Number.parseInt(timeR.replace(':', ''));
+        numTimeReturn - numTimePickup > 0 ? day = 1 : day = 0;
+      }
+      this.rentDays = days + day;
+    }
+
   }
 
   functionReturn(date: FormControl) {
@@ -53,20 +88,6 @@ export class FormSelectCarComponent implements OnInit {
       return dt;
     }
 
-  }
-
-  ngOnInit() {
-    this.pickupsLocationArray = this.selectionsService.pickupLocationArray;
-    this.pickupsTimeArray = this.selectionsService.time;
-    this.typeVehicleArray = this.selectionsService.typeVehicleArray;
-    this.ageDriverArray = this.selectionsService.ageDriverArray;
-  }
-
-
-  summa() {
-  }
-
-  submit(formClient: NgForm) {
   }
 
   showList() {

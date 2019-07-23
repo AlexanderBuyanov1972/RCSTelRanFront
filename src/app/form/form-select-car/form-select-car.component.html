@@ -1,7 +1,7 @@
 <mat-card class="card">
   <p>Select Car</p>
   <mat-card-content class="card-content">
-    <form #formSelectCar="ngForm" (mousemove)="summa()">
+    <form #formSelectCar="ngForm" (mousemove)="summa(datePickup, dateReturn, pickup_time,return_time )">
       <div class="example-container">
 
         <mat-form-field>
@@ -47,13 +47,13 @@
           <mat-datepicker #pickerReturn></mat-datepicker>
           <mat-error *ngIf="pickerReturn.errors?.required">{{requiredCarReturnDateMessage}}</mat-error>
         </mat-form-field>
-
+        <!--**************************************Select Return Time****************************************************-->
         <mat-form-field>
           <mat-label>Car Return Time</mat-label>
-          <mat-select ngModel #car_return_time="ngModel" name="car_return_time" [value]="valueCarReturnTime" required>
+          <mat-select ngModel #return_time="ngModel" name="car_return_time" [value]="valueReturnTime" required>
             <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
           </mat-select>
-          <mat-error *ngIf="car_return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
+          <mat-error *ngIf="return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
         </mat-form-field>
 <!--*********************************rent Days**********************************************-->
         <mat-form-field class="">
@@ -62,20 +62,19 @@
           <mat-hint></mat-hint>
           <mat-error *ngIf="days.errors?.required">{{requiredRentDaysMessage}}</mat-error>
         </mat-form-field>
-
+        <!--*********************************discount code**********************************************-->
         <mat-form-field class="">
           <input matInput type="text" name="discount_code" #discount_code="ngModel" [(ngModel)]="discountCode"
-                 placeholder="discount_сode" required>
+                 placeholder="discount_сode">
           <mat-hint></mat-hint>
-          <mat-error *ngIf="discount_code.errors?.required">{{requiredRentDaysMessage}}</mat-error>
         </mat-form-field>
-
+        <!--*********************************age driver**********************************************-->
         <mat-form-field>
           <mat-label>Age Driver</mat-label>
           <mat-select ngModel #age_driver="ngModel" name="age_driver" [value]="valueAgeDriver" required>
             <mat-option *ngFor="let age of ageDriverArray" [value]="age">{{age}}</mat-option>
           </mat-select>
-          <mat-error *ngIf="car_return_time.errors?.required">{{requiredAgeDriverMessage}}</mat-error>
+          <mat-error *ngIf="age_driver.errors?.required">{{requiredAgeDriverMessage}}</mat-error>
         </mat-form-field>
         <div class="example-button-row">
           <button mat-button class="mat-button button-form" type="button"
