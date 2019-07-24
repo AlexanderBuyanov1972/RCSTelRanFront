@@ -11,12 +11,18 @@ export class SelectionsService {
   ageDriverArray: string[] = ['18-22', '23+', '25+', '28+'];
   typeVehicleArray: string[] = ['Cars with manual gearbox', 'Cars with automatic transmission', 'Expensive cars', 'Special cars'];
   pickupLocationArray: string[] = [
-    'Ben-Gurion', 'Tel-Aviv', 'Holon', 'Ramat-Gan', 'Bat-Yam'];
+    'Afula HFAS01', 'Ashdod TLVS06', 'Beer Sheva BEVC01',
+    'Beit Shemesh JRSN01', 'Bnei Brak Kahanman 106 TLVS01', 'Bnei Brak Mivtza', 'Kadesh TLVE01', 'Elad', 'Eilat ETHC01',
+    'Eilat Ramon International Airport ETMT01', 'Haifa HFAC01', 'Herzliya TLVN01', 'Jerusalem King David JRSC01', 'Jerusalem Romema',
+    'Jerusalem Talpiyot', 'Kfar Saba TLVN02', 'Kiryat Shmone  KSWC01', 'Petah Tikva TLVE02',
+    'Nes Tziona TLVS04', 'Netanya TLVN03', 'Netivot', 'Rehovot TLVS05', 'Rishon LeZion TLVS03',
+    'Tel Aviv  Hamelacha TLVC01', 'Tel Aviv Ben Gurion International Airport TLVT03', 'Tel Aviv Hayarkon', 'Tiberias HFAE01'];
   time: string[] = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30',
     '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30',
     '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',
     '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30',
     '23:00', '23:30'];
+
   monthOfYear: string[] = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];
   numberMonthOfYear: string[] = ['01', '02', '03', '04', '05', '06',
@@ -34,6 +40,7 @@ export class SelectionsService {
   citiesOfIsrael: string[] = [];
   branches: string[] = [];
   currencies: string[] = ['USD', 'EUR', 'ILS'];
+
   countries: string[] = [
     'ALAND ISLANDS', 'AFGHANISTAN', 'ALBANIA', 'ALGERIA', 'AMERICAN', 'SAMOA', 'ANDORRA',
     'ANGOLA', 'ANGUILLA', 'ANTARCTICA', 'ANTIGUA AND BARBUDA', 'ARGENTINA', 'ARMENIA', 'ARUBA',
@@ -70,4 +77,4 @@ export class SelectionsService {
     'UNITED STATES MINOR OUTLYING ISLANDS', 'URUGUAY', 'UZBEKISTAN', 'VANUATU', 'VENEZUELA',
     'VIET NAM', 'WALLIS AND FUTUNA', 'ISLANDS', 'WESTERN SAHARA', 'YEMEN', 'ZAMBIA', 'ZIMBABWE'
   ];
- }
+}

@@ -21,6 +21,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import {AbstractRentCompany} from './services/abstract-rent-company';
+import {RentCompanyService} from './services/rent-company.service';
 
 
 
@@ -65,7 +67,9 @@ const routes: Route[] = [
     MatListModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    {provide: AbstractRentCompany, useExisting: RentCompanyService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
