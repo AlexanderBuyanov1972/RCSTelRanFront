@@ -20,4 +20,12 @@ export class RentCompanyService extends AbstractRentCompany {
   getAllLocationBranches(): Observable<ResponseFrom> {
     return this.httpClient.get<ResponseFrom>(url + PathHttps.GET_JSON_LOCATION_BRANCHES);
   }
+
+  getAllModelCars(): Observable<ResponseFrom> {
+    return this.httpClient.get<ResponseFrom>(url + PathHttps.GET_JSON_MODELS_RCS);
+  }
+
+  calculate(object: any): Observable<ResponseFrom> {
+    return this.httpClient.post<ResponseFrom>(url + '/calculate', object);
+  }
 }

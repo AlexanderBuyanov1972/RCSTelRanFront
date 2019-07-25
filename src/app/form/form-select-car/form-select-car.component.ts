@@ -1,8 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {CalculateService} from '../calculate.service';
 import {FormControl, NgForm} from '@angular/forms';
 import {SelectionsService} from '../../services/selections.service';
 import {MatSelect} from '@angular/material';
+import {AbstractRentCompany} from '../../services/abstract-rent-company';
 
 @Component({
   selector: 'app-form-select-car',
@@ -40,7 +40,7 @@ export class FormSelectCarComponent implements OnInit {
   private minDaysRent = 1;
 
 // ------------------------рабочий код-----------------------------------------------------------------------
-  constructor(private calculateService: CalculateService,
+  constructor(private rcs: AbstractRentCompany,
               private selectionsService: SelectionsService) {
   }
 

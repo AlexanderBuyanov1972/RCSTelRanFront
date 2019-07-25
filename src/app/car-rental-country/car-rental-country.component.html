@@ -1,28 +1,28 @@
+<mat-list class="list-group">
 <mat-horizontal-stepper class="mhs" [linear]="isLinear" #stepper>
 
   <mat-step [stepControl]="firstFormGroup">
     <form class="ms" [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Select Car</ng-template>
-      <div class="lotos" style="width: 30%">
-        <app-form-select-car (onChange)="handleChange($event)"></app-form-select-car>
+      <div class="lotos">
+        <app-form-select-car [ngStyle]="objExp" (onChange)="handleChange($event)"></app-form-select-car>
       </div>
       <div class="lotos" style="width: 65%; float: right">
         <app-list-cars [flagList]="myTask" style="overflow-y: auto"></app-list-cars>
       </div>
-    </form>
+      </form>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup">
     <form class="ms" [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Addition</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Addition" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+      <div class="lotos">
+      <app-form-protected-car></app-form-protected-car>
       </div>
-    </form>
+<!--      <mat-form-field>-->
+<!--        <input matInput placeholder="Addition" formControlName="secondCtrl" required>-->
+<!--      </mat-form-field>-->
+     </form>
   </mat-step>
 
   <mat-step [stepControl]="thirdFormGroup">
@@ -49,5 +49,6 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+</mat-list>
 
 

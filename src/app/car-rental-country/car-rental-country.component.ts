@@ -12,8 +12,7 @@ export class CarRentalCountryComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   myTask = false;
-
-
+  objExp: any;
 
 
   constructor(private formBuilder: FormBuilder) {
@@ -34,5 +33,6 @@ export class CarRentalCountryComponent implements OnInit {
 
   handleChange($event: any) {
     this.myTask = true;
+    this.objExp = {position: 'fixed', width: '30%'};
   }
 }

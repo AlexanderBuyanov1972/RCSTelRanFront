@@ -1,0 +1,23 @@
+.example-card{
+  width: 20%;
+  margin: 0% 0% 2% 40% ;
+}
+mat-card-title{
+  font-size: x-large;
+  color: blue;
+
+}
+mat-card-subtitle{
+  color: red;
+  font-size: larger;
+
+}
+p{
+  color: darkgreen;
+  font-size: larger;
+  text-align: center;
+}
+.list-group{
+  height: 85vh;
+  overflow-y: auto;
+}

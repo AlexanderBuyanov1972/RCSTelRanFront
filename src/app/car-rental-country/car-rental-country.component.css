@@ -4,7 +4,7 @@
   overflow-y: auto
 }
 .ms{
-  background-color: aquamarine;
+  background-color: yellow;
 
  overflow-y: auto;
 }
@@ -13,4 +13,11 @@
 }
 .lotos{
   display: inline-block;
+  width: 30%;
+
+}
+
+.list-group{
+  height: 90vh;
+  overflow-y: auto;
 }
