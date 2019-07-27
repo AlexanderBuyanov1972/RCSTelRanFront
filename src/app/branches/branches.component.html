@@ -1,5 +1,5 @@
 <mat-list class="list-group">
-  <div *ngFor="let locationBranch  of locationBranches$|async">
+  <div *ngFor="let locationBranch of locationBranches$|async">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -10,7 +10,15 @@
       <mat-card-content>
         <p>{{locationBranch.address}}</p>
         <hr>
-        <p>{{locationBranch.openhours}}</p>
+        <div class="">
+        <p>sunday: {{locationBranch.sunday}}</p>
+        <p>monday: {{locationBranch.monday}}</p>
+        <p>tuesday: {{locationBranch.tuesday}}</p>
+        <p>wednesday: {{locationBranch.wednesday}}</p>
+        <p>thursday: {{locationBranch.thursday}}</p>
+        <p>friday: {{locationBranch.friday}}</p>
+        <p>saturday: {{locationBranch.saturday}}</p>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button>LIKE</button>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractRentCompany} from '../services/abstract-rent-company';
 import {LocationBranch} from '../dto/location-branch';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 
@@ -15,11 +15,16 @@ export class BranchesComponent implements OnInit {
 
   constructor(private rcs: AbstractRentCompany) {
     this.locationBranches$ = this.rcs.getAllLocationBranches().pipe(
-      map(value => value.content as LocationBranch[])
+      map(
+        value => {
+          return value.content as LocationBranch[];
+        }
+      )
     );
   }
 
   ngOnInit() {
+
   }
 
 }

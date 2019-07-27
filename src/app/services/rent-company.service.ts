@@ -16,9 +16,8 @@ export class RentCompanyService extends AbstractRentCompany {
   constructor(private httpClient: HttpClient) {
     super();
   }
-
   getAllLocationBranches(): Observable<ResponseFrom> {
-    return this.httpClient.get<ResponseFrom>(url + PathHttps.GET_JSON_LOCATION_BRANCHES);
+    return this.httpClient.get<ResponseFrom>(url + PathHttps.GET_LOCATION_BRANCHES);
   }
 
   getAllModelCars(): Observable<ResponseFrom> {
@@ -28,4 +27,6 @@ export class RentCompanyService extends AbstractRentCompany {
   calculate(object: any): Observable<ResponseFrom> {
     return this.httpClient.post<ResponseFrom>(url + '/calculate', object);
   }
+
+
 }
