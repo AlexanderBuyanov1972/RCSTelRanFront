@@ -1,17 +1,9 @@
 <mat-card class="card">
   <p>Select Car</p>
   <mat-card-content class="card-content">
-    <form #formSelectCar="ngForm" (mousemove)="summa(datePickup, dateReturn, pickup_time,return_time, pickup_location )">
+    <form #formSelectCar="ngForm" (mousemove)="summa(datePickup, dateReturn, pickup_time,return_time, pickup_location, return_location )">
       <div class="example-container">
-
-        <mat-form-field >
-          <mat-label>Pickup Location</mat-label>
-          <mat-select ngModel #pickup_location="ngModel" name="pickup_location" [value]="valuePickupLocation" required>
-            <mat-option *ngFor="let location of pickupsLocationArray; locationToFilter as location" [value]="location">{{location}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="pickup_location.errors?.required">{{requiredPickupLocationMessage}}</mat-error>
-        </mat-form-field>
-
+        <!--************************************** Type Vehicle ****************************************************-->
         <mat-form-field>
           <mat-label>Type Vehicle</mat-label>
           <mat-select ngModel #type_vehicle="ngModel" name="type_vehicle" [value]="valueTypeVehicle" required>
@@ -19,11 +11,20 @@
           </mat-select>
           <mat-error *ngIf="type_vehicle.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
         </mat-form-field>
-        <!--**************************************Pickup Date****************************************************-->
+        <!--************************************** Pickup Location **************************************************-->
+        <mat-form-field >
+          <mat-label>Pickup Location</mat-label>
+          <mat-select ngModel #pickup_location="ngModel" name="pickup_location" [value]="valuePickupLocation" required>
+            <mat-option *ngFor="let location of pickupsLocationArray" [value]="location">{{location}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="pickup_location.errors?.required">{{requiredPickupLocationMessage}}</mat-error>
+        </mat-form-field>
+
+        <!--************************************** Pickup Date ****************************************************-->
         <mat-form-field class="example-full-width">
           <mat-label>Pickup Date</mat-label>
           <input matInput [min]="minDatePickup" [max]="functionPickup(dateReturn)" [matDatepicker]="pickerPickup"
-                 placeholder="Choose a date" [formControl]="datePickup" [matDatepickerFilter]="myFilter">
+                 placeholder="Choose a date" [formControl]="datePickup" [matDatepickerFilter]="myFilterPickup">
           <mat-datepicker-toggle matSuffix [for]="pickerPickup"></mat-datepicker-toggle>
           <mat-datepicker #pickerPickup></mat-datepicker>
           <mat-error *ngIf="pickerPickup.errors?.required">{{requiredPickupDateMessage}}</mat-error>
@@ -37,21 +38,30 @@
           </mat-select>
           <mat-error *ngIf="pickup_time.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
         </mat-form-field>
+        <!--************************************** Return Location **************************************************-->
+        <mat-form-field >
+          <mat-label>Return Location</mat-label>
+          <mat-select ngModel #return_location="ngModel" name="return_location" [value]="valueReturnLocation" required>
+            <mat-option *ngFor="let location of returnsLocationArray" [value]="location">{{location}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="return_location.errors?.required">{{requiredReturnLocationMessage}}</mat-error>
+        </mat-form-field>
+
         <!--**************************************Return Date****************************************************-->
 
         <mat-form-field class="example-full-width"  style="color: green">
-          <mat-label>Car Return Date</mat-label>
+          <mat-label>Return Date</mat-label>
           <input matInput [min]="functionReturn(datePickup)" [matDatepicker]="pickerReturn"
-                 placeholder="Choose a date" [formControl]="dateReturn" [matDatepickerFilter]="myFilter">
+                 placeholder="Choose a date" [formControl]="dateReturn" [matDatepickerFilter]="myFilterReturn">
           <mat-datepicker-toggle matSuffix [for]="pickerReturn"></mat-datepicker-toggle>
           <mat-datepicker #pickerReturn></mat-datepicker>
           <mat-error *ngIf="pickerReturn.errors?.required">{{requiredCarReturnDateMessage}}</mat-error>
         </mat-form-field>
         <!--**************************************Select Return Time****************************************************-->
         <mat-form-field>
-          <mat-label>Car Return Time</mat-label>
+          <mat-label>Return Time</mat-label>
           <mat-select ngModel #return_time="ngModel" name="car_return_time" [value]="valueReturnTime" required>
-            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
+            <mat-option *ngFor="let time of returnsTimeArray" [value]="time">{{time}}</mat-option>
           </mat-select>
           <mat-error *ngIf="return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
         </mat-form-field>

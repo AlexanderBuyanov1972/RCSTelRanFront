@@ -1,7 +1,4 @@
-export class LocationBranch {
-  city: string;
-  address: string;
-  phone: string;
+export class OpenHours {
   sunday: string;
   monday: string;
   tuesday: string;

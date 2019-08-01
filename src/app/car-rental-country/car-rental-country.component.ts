@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CalculationService} from '../services/calculation.service';
 
 @Component({
   selector: 'app-car-rental-country',
@@ -15,7 +16,7 @@ export class CarRentalCountryComponent implements OnInit {
   objExp: any;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private calcService: CalculationService) {
   }
 
   ngOnInit() {

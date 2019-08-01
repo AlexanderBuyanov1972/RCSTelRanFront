@@ -1,9 +1,9 @@
 <mat-list class="list-group">
-  <div *ngFor="let locationBranch of locationBranches$|async">
+  <div *ngFor="let locationBranch of locationBranches">
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{locationBranch.city}}</mat-card-title>
+        <mat-card-title>{{locationBranch.name}}</mat-card-title>
         <mat-card-subtitle>{{locationBranch.phone}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="https://foto.cheb.ru/foto/foto.cheb.ru-105567.jpg" alt="Photo of a Shiba Inu">
@@ -11,13 +11,13 @@
         <p>{{locationBranch.address}}</p>
         <hr>
         <div class="">
-        <p>sunday: {{locationBranch.sunday}}</p>
-        <p>monday: {{locationBranch.monday}}</p>
-        <p>tuesday: {{locationBranch.tuesday}}</p>
-        <p>wednesday: {{locationBranch.wednesday}}</p>
-        <p>thursday: {{locationBranch.thursday}}</p>
-        <p>friday: {{locationBranch.friday}}</p>
-        <p>saturday: {{locationBranch.saturday}}</p>
+        <p>sunday: {{locationBranch.openhours.sunday}}</p>
+        <p>monday: {{locationBranch.openhours.monday}}</p>
+        <p>tuesday: {{locationBranch.openhours.tuesday}}</p>
+        <p>wednesday: {{locationBranch.openhours.wednesday}}</p>
+        <p>thursday: {{locationBranch.openhours.thursday}}</p>
+        <p>friday: {{locationBranch.openhours.friday}}</p>
+        <p>saturday: {{locationBranch.openhours.saturday}}</p>
         </div>
       </mat-card-content>
       <mat-card-actions>

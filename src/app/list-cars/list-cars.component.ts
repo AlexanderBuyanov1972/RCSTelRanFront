@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ModelCar} from '../dto/model-car';
+import {ModelCar} from '../dto/models/model-car';
+import {CalculationService} from '../services/calculation.service';
 import {AbstractRentCompany} from '../services/abstract-rent-company';
 
 @Component({
@@ -9,18 +10,20 @@ import {AbstractRentCompany} from '../services/abstract-rent-company';
 })
 export class ListCarsComponent implements OnInit {
   @Input() flagList;
+  @Input() basePrice;
   allModelCars: ModelCar[];
   selectModelCar: ModelCar;
 
   constructor(private rcs: AbstractRentCompany) {
-    this.rcs.getAllModelCars().subscribe(
-      value => {
-        this.allModelCars = value.content as ModelCar[];
-      }
-    );
+this.rcs.getAllModelCars().subscribe(
+  value => {
+    this.allModelCars = value.content as ModelCar[];
+  }
+);
   }
 
   ngOnInit() {
+
   }
 
   selectModel(vehicleType: string) {
@@ -30,5 +33,9 @@ export class ListCarsComponent implements OnInit {
         console.log(this.selectModelCar);
       }
     });
+  }
+
+  functionGetPrice(modelCar: ModelCar) {
+    
   }
 }
