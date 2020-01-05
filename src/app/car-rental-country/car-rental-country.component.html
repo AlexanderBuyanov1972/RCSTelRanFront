@@ -3,31 +3,30 @@
 
   <mat-step [stepControl]="firstFormGroup">
     <form class="ms" [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Select Car</ng-template>
+      <ng-template matStepLabel>Choose Car</ng-template>
       <div class="lotos">
-        <app-form-select-car [ngStyle]="objExp" (onChange)="handleChange($event)"></app-form-select-car>
+        <app-form-select-car [ngStyle]="objExp" (onChange)="handleChangeDateAndDays($event) "
+        ></app-form-select-car>
       </div>
       <div class="lotos" style="width: 65%; float: right">
-        <app-list-cars  [flagList]="myTask" style="overflow-y: auto"></app-list-cars>
+        <app-list-cars  [flagList]="myTask" [countDays]="rentDaysNumbers" [rentDate]="rentDate"
+                        (onChangeList)="handleChangeList($event)" style="overflow-y: auto"></app-list-cars>
       </div>
       </form>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup">
     <form class="ms" [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Addition</ng-template>
+      <ng-template matStepLabel>Additional Options</ng-template>
       <div class="lotos">
-      <app-form-protected-car></app-form-protected-car>
-      </div>
-<!--      <mat-form-field>-->
-<!--        <input matInput placeholder="Addition" formControlName="secondCtrl" required>-->
-<!--      </mat-form-field>-->
-     </form>
+      <app-form-protected-car [startPrice]="priceStart"></app-form-protected-car>
+    </div>
+    </form>
   </mat-step>
 
   <mat-step [stepControl]="thirdFormGroup">
     <form class="ms" [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Personal Data</ng-template>
+      <ng-template matStepLabel>Personal Details</ng-template>
       <mat-form-field>
         <input matInput placeholder="Address" formControlName="thirdCtrl" required>
       </mat-form-field>
@@ -40,7 +39,7 @@
 
   <mat-step class="">
     <div class="ms">
-      <ng-template matStepLabel class="ms">Agreement</ng-template>
+      <ng-template matStepLabel class="ms">Confirmation</ng-template>
       You are now done.
       <div class="">
         <button mat-button matStepperPrevious>Back</button>

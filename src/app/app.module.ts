@@ -18,7 +18,7 @@ import {
   MatDatepickerModule,
   MatFormFieldModule,
   MatInputModule,
-  MatNativeDateModule,
+  MatNativeDateModule, MatRadioModule,
   MatSelectModule,
   MatStepperModule
 } from '@angular/material';
@@ -33,7 +33,9 @@ import {RentCompanyService} from './services/rent-company.service';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import {FormSelectCarComponent} from './form/form-select-car/form-select-car.component';
-import { FormProtectedCarComponent } from './form/form-protected-car/form-protected-car.component';
+import {FormProtectedCarComponent } from './form/form-protected-car/form-protected-car.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 const routes: Route[] = [
@@ -80,7 +82,9 @@ const routes: Route[] = [
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     {provide: AbstractRentCompany, useExisting: RentCompanyService}

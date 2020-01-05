@@ -1,71 +1,54 @@
-<mat-card class="card">
-  <p>Protected Car</p>
-  <mat-card-content class="card-content">
-    <form #formSelectCar="ngForm" (mousemove)="summa(datePickup, dateReturn, pickup_time,return_time )">
-      <div class="example-container">
-
-        <mat-form-field>
-          <mat-label>Pickup Location</mat-label>
-          <mat-select ngModel #pickup_location="ngModel" name="pickup_location" [value]="valuePickupLocation" required>
-            <mat-option *ngFor="let location of pickupsLocationArray" [value]="location">{{location}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="pickup_location.errors?.required">{{requiredPickupLocationMessage}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Type Vehicle</mat-label>
-          <mat-select ngModel #type_vehicle="ngModel" name="type_vehicle" [value]="valueTypeVehicle" required>
-            <mat-option *ngFor="let type of typeVehicleArray" [value]="type">{{type}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="type_vehicle.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
-        </mat-form-field>
-
-        <!--**************************************Select Pickup Time****************************************************-->
-        <mat-form-field>
-          <mat-label>Pickup Time</mat-label>
-          <mat-select ngModel #pickup_time="ngModel" name="pickup_time" [value]="valuePickupTime" required>
-            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time"
-                        [disabled]="flagSelectOptions(time)">{{time}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="pickup_time.errors?.required">{{requiredPickupTimeMessage}}</mat-error>
-        </mat-form-field>
-
-        <!--**************************************Select Return Time****************************************************-->
-        <mat-form-field>
-          <mat-label>Car Return Time</mat-label>
-          <mat-select ngModel #return_time="ngModel" name="car_return_time" [value]="valueReturnTime" required>
-            <mat-option *ngFor="let time of pickupsTimeArray" [value]="time">{{time}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="return_time.errors?.required">{{requiredCarReturnTimeMessage}}</mat-error>
-        </mat-form-field>
-        <!--*********************************rent Days**********************************************-->
-        <mat-form-field class="">
-          <input matInput type="text" name="days" #days="ngModel" [(ngModel)]="rentDays"
-                 placeholder="Number of rental days " readonly required>
-          <mat-hint></mat-hint>
-          <mat-error *ngIf="days.errors?.required">{{requiredRentDaysMessage}}</mat-error>
-        </mat-form-field>
-        <!--*********************************discount code**********************************************-->
-        <mat-form-field class="">
-          <input matInput type="text" name="discount_code" #discount_code="ngModel" [(ngModel)]="discountCode"
-                 placeholder="discount_сode">
-          <mat-hint></mat-hint>
-        </mat-form-field>
-        <!--*********************************age driver**********************************************-->
-        <mat-form-field>
-          <mat-label>Age Driver</mat-label>
-          <mat-select ngModel #age_driver="ngModel" name="age_driver" [value]="valueAgeDriver" required>
-            <mat-option *ngFor="let age of ageDriverArray" [value]="age">{{age}}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="age_driver.errors?.required">{{requiredAgeDriverMessage}}</mat-error>
-        </mat-form-field>
-        <div class="example-button-row">
-          <button mat-button class="mat-button button-form" type="button"
-                  [disabled]="formSelectCar.invalid" (click)="showList()">Show Prices
-          </button>
-        </div>
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Checkbox configuration</h2>
+    <p>priceStart: {{startPrice|currency:'USD'}}</p>
+    <h1>Protection Information</h1>
+    <section class="example-section">
+      <div class="example-margin">
+        <mat-checkbox [(ngModel)]="check1" readonly>CDW / LDW</mat-checkbox>
       </div>
-    </form>
+      <div class="example-margin">
+        <mat-checkbox [(ngModel)]="check2" readonly>TP</mat-checkbox>
+      </div>
+      <div class="example-margin">
+        <mat-checkbox [(ngModel)]="check3" readonly>Liability (3PLC)</mat-checkbox>
+      </div>
+      <div class="example-margin">
+        <mat-checkbox [(ngModel)]="check4">Super CDW‎</mat-checkbox>
+      </div>
+      <div class="example-margin">
+        <mat-checkbox [(ngModel)]="check5">Super TP‎</mat-checkbox>
+      </div>
+    </section>
+      <h1>Extras</h1>
+      <section class="example-section">
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check6">CBS Child Booster Seat (8 years and above)‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check7">CSI Child Seat for Infant (0-12 months)</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check8">ROADSAFE Assistance</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check9">Smartphone – Navigation System GPS‎‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check10">Baby/Child Seat‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check11">Additional Driver‎‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check12">Underage Driver‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check13">Airport Fee‎</mat-checkbox>
+        </div>
+        <div class="example-margin">
+          <mat-checkbox [(ngModel)]="check14">VIP SERVICE (Quick and convenient return of vehicle at Ben-Gurion Airport). ‎</mat-checkbox>
+        </div>
+    </section>
   </mat-card-content>
 </mat-card>
-

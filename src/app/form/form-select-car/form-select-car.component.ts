@@ -7,6 +7,9 @@ import {Branch} from '../../dto/locations/branch';
 import {Locations} from '../../dto/locations/locations';
 import {OpenHours} from '../../dto/locations/open-hours';
 
+
+
+
 @Component({
   selector: 'app-form-select-car',
   templateUrl: './form-select-car.component.html',
@@ -226,6 +229,7 @@ export class FormSelectCarComponent implements OnInit {
         numTimeReturn - numTimePickup > 0 ? day = 1 : day = 0;
       }
       this.rentDays = days + day;
+
     }
   }
 
@@ -244,7 +248,8 @@ export class FormSelectCarComponent implements OnInit {
   }
 
   showList() {
-    this.onChange.emit();
+    const objForList = {rDays: this.rentDays, rDate: this.datePickup.value};
+    this.onChange.emit(objForList);
   }
 
   flagSelectOptions(time: string) {

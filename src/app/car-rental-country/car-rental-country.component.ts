@@ -14,7 +14,9 @@ export class CarRentalCountryComponent implements OnInit {
   thirdFormGroup: FormGroup;
   myTask = false;
   objExp: any;
-
+  rentDaysNumbers: number;
+  rentDate: Date;
+  priceStart: number;
 
   constructor(private formBuilder: FormBuilder, private calcService: CalculationService) {
   }
@@ -32,8 +34,16 @@ export class CarRentalCountryComponent implements OnInit {
   }
 
 
-  handleChange($event: any) {
+  handleChangeDateAndDays(event: any) {
     this.myTask = true;
     this.objExp = {position: 'fixed', width: '30%'};
+    this.rentDaysNumbers = event.rDays as number;
+    this.rentDate = event.rDate as Date;
   }
+
+  handleChangeList(event2: number) {
+    this.priceStart = event2 as number;
+    console.log('this.priceStart-------------->' + this.priceStart);
+  }
+
 }
